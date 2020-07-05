@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>
+            Welcome to Tasky!!
+        </title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            #sortable a {
+                margin-top: 20px;
+                border-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        {{> header}}
+        <br>
+        <div class="container" id="addButton" style="display: block;">
+            <div class="row justify-content-md-center">
+                <button type="button" class="btn btn-primary btn-lg" onclick="toggleSearch()"><span> <i class="fa fa-list"></i> </span>Add a Task</button>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="addBar" style="display: none;">
+            <form action="/task/create" method="POST">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="taskTitle">Task Title</label>
+                            <input type="text" class="form-control z-depth-1" id="taskTitle" name="taskTitle" placeholder="Send an email!!">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="Email to George regarding Hack." rows="5"></textarea>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success"><span> <i class="fa fa-plus"></i> </span>&nbsp Add</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="container">
+            <div class="list-group" id="sortable">
+                {{#each tasks}}
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">{{ this.taskTitle }}</h4>
+                                    {{!-- <small>{{this.dateOfCompletion}}</small> --}}
+                                </div>
+                                <p class="mb-1">{{this.description}}</p>
+                                {{!-- <small>Donec id elit non mi porta.</small> --}}
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{> footer}}
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+        <script>
+            $("#sortable").sortable();
+            function toggleSearch(){
+                $("#addButton").css("display","none");
+                $("#addBar").css("display","block");
+            }
+        </script>
+    </body>
+</html>

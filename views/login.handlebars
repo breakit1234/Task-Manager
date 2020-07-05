@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>
+            Welcome to Tasky!!
+        </title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        {{> header}}
+        <br>
+        {{> messages}}
+        <br>
+        <!-- Default form login -->
+        <div id="login">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <form class="text-center border border-light p-5" action="/user/login" method="POST">
+
+                            <p class="h4 mb-4">Sign in</p>
+
+                            <!-- Email -->
+                            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+
+                            <!-- Password -->
+                            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="password">
+
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <!-- Remember me -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Forgot password -->
+                                    <a href="">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <!-- Sign in button -->
+                            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+                            <!-- Register -->
+                            <p>Not a member?
+                                <a id="registerLink" href="/user/register">Register</a>
+                            </p>
+
+                            <!-- Social login -->
+                            <p>or sign in with:</p>
+
+                            <a href="#" class="mx-2" role="button"><i class="fa fa-facebook-f light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fa fa-twitter light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fa fa-linkedin light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fa fa-github light-blue-text"></i></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Default form login -->
+        {{> footer}}
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        </body>
+</html>
